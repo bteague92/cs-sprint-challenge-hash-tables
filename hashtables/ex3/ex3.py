@@ -1,23 +1,26 @@
 def intersection(arrays):
 
     cache = {}
-    count = 0
+    list = []
 
-    for item in arrays[count]:
-        if count < len(arrays):
-            if item in cache:
-                result.append(item)
-                count += 1
-            else: 
-                cache[item] = [item]
-                count += 1
-        else:
-            if item in cache:
-                result.append(item)
-            else: 
-                cache[item] = [item]
+    #loop through arrays
+    for arr in arrays:
+        #loop through inner array
+        for item in arr:
+            #if items not in cache, add it
+            if item not in cache:
+                cache[item] = 1
+            #if it is in cache, increment by one
+            else:
+                cache[item] += 1
+    
+    #loop through cache
+    for item in cache:
+        #if item == length of array then its in every array
+        if cache[item] == len(arrays):
+            list.append(item)
 
-    return result
+    return list
 
 
 if __name__ == "__main__":
